@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chronometre"
+version = "0.0.1"
+description = "As 'chronomètre' is a 'stopwatch' this package offers a simple stopwatch"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.uv.extra-build-dependencies]
+chronometre = ["pybind11"]

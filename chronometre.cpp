@@ -30,8 +30,17 @@
 // "Elapsed 5ms"
 
 class stopwatch {
+private:
     // internal state variable of clock time point 'when started'
     std::chrono::time_point<std::chrono::steady_clock> start_tp_;
+
+    // Static factory function returning a raw pointer
+    static stopwatch* create_ptr(stopwatch& obj, std::string& s) {
+        auto p = static_cast<stopwatch*>( (void*) strtol(s.c_str(), nullptr, 0));
+        p->start_tp_ = obj.start_tp_;
+        return p;
+    }
+
 public:
     // default constructor initialising stopwatch as of 'right now'
     stopwatch() : start_tp_{std::chrono::steady_clock::now()} {}
@@ -55,15 +64,30 @@ public:
     void reset() {
         start_tp_ = std::chrono::steady_clock::now();
     }
+
+    // let bake have access to private member elements
+    friend stopwatch& bake(stopwatch&);
+
 };
+
+stopwatch& bake(stopwatch& sw) {
+    std::stringstream ss;
+    ss << std::showbase << std::hex << reinterpret_cast<void*>(&sw);
+    std::string hex_address{ss.str()};
+    return *stopwatch::create_ptr(sw, hex_address);
+}
 
 // Standard pybind11 wrapping of C++ class 'stopwatch' into a module 'Stopwatch'
 // exported by this 'chronometre' Python package. The second constructor can be
 // used to pass a pointer to an existing instance (as a string containing the address)
+// Note that this works from R but not from Python; we can use the factory function
+// there
 PYBIND11_MODULE(chronometre, m) {
     pybind11::class_<stopwatch>(m, "Stopwatch")
         .def(pybind11::init<>())
         .def(pybind11::init<std::string&>())
         .def("elapsed", &stopwatch::elapsed)
         .def("reset", &stopwatch::reset);
+
+    m.def("bake", &bake, "Return a cloned stopwatch", pybind11::arg("sw"));
 }

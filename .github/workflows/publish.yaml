@@ -7,7 +7,7 @@
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
 
-name: Upload Python Package
+name: publish
 
 on:
   workflow_dispatch:
@@ -48,7 +48,7 @@ jobs:
     environment:
       name: pypi
       # OPTIONAL: uncomment and update to include your PyPI project URL in the deployment status:
-      # url: https://pypi.org/p/YOURPROJECT
+      url: https://pypi.org/project/chronometre/
     steps:
       - name: Retrieve release distributions
         uses: actions/download-artifact@v5
@@ -56,4 +56,4 @@ jobs:
           name: release-dists
           path: dist/
       - name: Publish release distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@6f7e8d9c0b1a2c3d4e5f6a7b8c9d0e1f2a3b4c5d
+        uses: pypa/gh-action-pypi-publish@release/v1

@@ -82,7 +82,7 @@ stopwatch& bake(stopwatch& sw) {
 // used to pass a pointer to an existing instance (as a string containing the address)
 // Note that this works from R but not from Python; we can use the factory function
 // there
-PYBIND11_MODULE(chronometre, m) {
+PYBIND11_MODULE(_chronometre, m) {
     pybind11::class_<stopwatch>(m, "Stopwatch")
         .def(pybind11::init<>())
         .def(pybind11::init<std::string&>())

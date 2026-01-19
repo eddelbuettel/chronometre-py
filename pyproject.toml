@@ -10,5 +10,16 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
 
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+
 [tool.uv.extra-build-dependencies]
 chronometre = ["pybind11"]
+
+# [tool.setuptools]
+# # For setuptools to discover packages correctly
+# package-dir = {"" = "src"}
+# packages = ["chronometre"]
+
+# [tool.pytest.ini_options]
+# pythonpath = ["src"]

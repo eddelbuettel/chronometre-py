@@ -1,0 +1,4 @@
+chronometre==0.0.1
+pybind11==3.0.1
+pytest==9.0.2
+setuptools==80.9.0

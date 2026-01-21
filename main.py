@@ -9,14 +9,18 @@ def main():
     print(s.elapsed())
     time.sleep(0.1)
     print(s.elapsed())
+    print(s.count())
 
     s2 = chronometre.bake(s)
     print(s2)
     print(s2.elapsed())
+    print(s2.elapsed())
     time.sleep(0.1)
     print(s2.elapsed())
+    print(s2.count())
 
     print(s.elapsed())
+    print(s.count())
 
 if __name__ == "__main__":
     main()

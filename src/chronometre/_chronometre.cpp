@@ -55,9 +55,14 @@ public:
     }
 
     // standard accessor to determine elapsed time in seconds as duration object
-    // add .count() to convert to to double instead of duration object (which has formating)
     std::chrono::duration<double> elapsed() const {
         return std::chrono::duration<double>(std::chrono::steady_clock::now() - start_tp_);
+    }
+
+    // same elapsed time but as (fractional) seconds
+    double count() const {
+        auto d = elapsed();
+        return d.count();
     }
 
     // helper to reset internal clock to current time
@@ -87,6 +92,7 @@ PYBIND11_MODULE(_chronometre, m) {
         .def(pybind11::init<>())
         .def(pybind11::init<std::string&>())
         .def("elapsed", &stopwatch::elapsed)
+        .def("count", &stopwatch::count)
         .def("reset", &stopwatch::reset);
 
     m.def("bake", &bake, "Return a cloned stopwatch", pybind11::arg("sw"));

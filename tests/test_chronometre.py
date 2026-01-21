@@ -36,6 +36,18 @@ class TestStopwatchBasicFunctionality:
         second_elapsed = sw.elapsed()
         assert second_elapsed > first_elapsed
 
+    def test_count_returns_float(self):
+        """Test that count() returns a float object."""
+        sw = chronometre.Stopwatch()
+        count = sw.count()
+        assert isinstance(count, float)
+
+    def test_count_is_positive(self):
+        """Test that count() return is positive."""
+        sw = chronometre.Stopwatch()
+        count = sw.count()
+        assert count > 0
+
     def test_reset_functionality(self):
         """Test that reset() resets the stopwatch."""
         sw = chronometre.Stopwatch()
@@ -194,6 +206,12 @@ class TestStopwatchInterface:
         sw = chronometre.Stopwatch()
         assert hasattr(sw, 'elapsed')
         assert callable(sw.elapsed)
+
+    def test_stopwatch_has_count_method(self):
+        """Test that Stopwatch has a count method."""
+        sw = chronometre.Stopwatch()
+        assert hasattr(sw, 'count')
+        assert callable(sw.count)
 
     def test_stopwatch_has_reset_method(self):
         """Test that Stopwatch has a reset method."""

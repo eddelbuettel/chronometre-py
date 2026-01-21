@@ -2,6 +2,8 @@
 ## chronometre: Simple Stopwatch Class
 
 [![ci](https://github.com/eddelbuettel/chronometre-py/actions/workflows/ci.yaml/badge.svg)](https://github.com/eddelbuettel/chronometre-py/actions/workflows/ci.yaml)
+![pypi](https://img.shields.io/pypi/v/chronometre?color=3776ab)
+
 
 ### Motivation
 

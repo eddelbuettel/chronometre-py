@@ -17,7 +17,7 @@ ext_modules = [
 
 setup(
     name="chronometre",
-    version="0.0.1",
+    version="0.0.2",
     packages=["chronometre"],
     package_dir={"": "src"},
     ext_modules=ext_modules,

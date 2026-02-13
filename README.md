@@ -2,7 +2,7 @@
 ## chronometre: Simple Stopwatch Class
 
 [![ci](https://github.com/eddelbuettel/chronometre-py/actions/workflows/ci.yaml/badge.svg)](https://github.com/eddelbuettel/chronometre-py/actions/workflows/ci.yaml)
-![pypi](https://img.shields.io/pypi/v/chronometre?color=3776ab)
+[![pypi](https://img.shields.io/pypi/v/chronometre?color=3776ab)](https://pypi.org/project/chronometre/)
 [![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/chronometre-py)](https://github.com/eddelbuettel/chronometre-py)
 
 
@@ -23,7 +23,9 @@ This repository has one answer and working demonstration. It uses a very small b
 [spdlog][spdlog] library, and specifically the already simplified version in
 [RcppSpdlog][rcppspdlog] presented by [this 'spdlog_stopwatch.h' file][spdlog_stopwatch].
 
-It is used by the demo in the sibbling repository [chronometre-r][chronometre-r].
+It is used by the demo in the corresponding [R
+package](https://cran.r-project.org/package=chronometre) from the sibbling repository
+[chronometre-r][chronometre-r].
 
 ### Python Demo
 
